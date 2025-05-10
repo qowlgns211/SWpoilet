@@ -1,11 +1,23 @@
-with open("C:/Users/a5105/Desktop/vscode_pj/python/procedure1/PJ_1/1-1-mission_computer_main.log", "r") as fr:
-    lines =fr.readlines()
+try:
+    with open("C:/Users/a5105/Desktop/vscode_pj/python/procedure1/PJ_1/1-1-mission_computer_main.log", "r") as fr:
+        lines =fr.readlines()
+except FileNotFoundError:
+    print("입력 파일 없음")
+    line=[]
+except Exception as e:
+    print("입력 오류", e)
+    line = []
+    
 
 lines.reverse()
 target = ['explosion', 'unstable']
 
-fw = open("C:/Users/a5105/Desktop/vscode_pj/python/error.txt", "w")
-
+try:
+    fw = open("C:/Users/a5105/Desktop/vscode_pj/python/procedure1/PJ_1/error.txt", "w")
+except:
+    print("출력 오류",e)
+    
+    
 for line in lines:
     line = line.strip()
     for wanna_word in target:
@@ -16,6 +28,3 @@ for line in lines:
             
     print(line)
     if not line: break
-    
-fr.close()
-fw.close()
